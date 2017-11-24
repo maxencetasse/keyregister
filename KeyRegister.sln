@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyRegister", "KeyRegister\KeyRegister.csproj", "{8C730225-E8B5-4D45-9637-EA0D3E8AB43D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyRegister", "KeyRegister\KeyRegister.csproj", "{4BD44BC1-2F74-4133-B141-A6C8B35EB8A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8C730225-E8B5-4D45-9637-EA0D3E8AB43D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C730225-E8B5-4D45-9637-EA0D3E8AB43D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C730225-E8B5-4D45-9637-EA0D3E8AB43D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C730225-E8B5-4D45-9637-EA0D3E8AB43D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BD44BC1-2F74-4133-B141-A6C8B35EB8A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD44BC1-2F74-4133-B141-A6C8B35EB8A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD44BC1-2F74-4133-B141-A6C8B35EB8A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD44BC1-2F74-4133-B141-A6C8B35EB8A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03A66519-6284-4AD6-9BB1-FA43E6A11148}
 	EndGlobalSection
 EndGlobal
