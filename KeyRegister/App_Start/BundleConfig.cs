@@ -28,12 +28,12 @@ namespace KeyRegister
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content").IncludeDirectory(
-                        "~/startbootstrap-sb-admin-2-gh-pages",
+                        "~/Content/startbootstrap-sb-admin-2-gh-pages",
                         "*.js",
                         true));
 
             bundles.Add(new StyleBundle("~/Content").IncludeDirectory(
-                        "~/startbootstrap-sb-admin-2-gh-pages",
+                        "~/Content/startbootstrap-sb-admin-2-gh-pages",
                         "*.css",
                         true));
         }
