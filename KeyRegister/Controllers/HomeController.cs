@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KeyRegister.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace KeyRegister.Controllers
 {
     public class HomeController : Controller
     {
+        private Context db = new Context();
+
         public ActionResult Index()
         {
             return View();
@@ -17,7 +20,7 @@ namespace KeyRegister.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(db.Utilisateurs.ToList());
         }
 
         public ActionResult Contact()

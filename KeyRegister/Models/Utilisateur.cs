@@ -4,12 +4,13 @@ namespace KeyRegister.Models
 {
     public class Utilisateur
     {
-        public int idBooster { get; set; }
-        public string nomUtilisateur { get; set; }
-        public string prenomUtilisateur { get; set; }
-        public int idRole { get; set; }
-        public int idCampus { get; set; }
-        public DateTime dateInscriptionUtilisateur { get; set; }
-        public bool charteUtilisateur { get; set; }
+        public int UtilisateurID { get; set; }
+        public int IdBooster { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public int RoleID { get; set; }
+        public int CampusID { get; set; }
+        public DateTime DateInscription { get; set; }
+        public bool Charte { get; set; }
     }
 }

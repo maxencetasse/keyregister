@@ -8,11 +8,11 @@ namespace KeyRegister.Models
 {
     public class Historique
     {
-        public int idHistorique { get; set; }
-        public int idBootser { get; set; }
-        public int idReservation { get; set; }
-        public int idCampus { get; set; }
-        public int idEtat { get; set; }
-        public DateTime dateHistorique { get; set; }
+        public int HistoriqueID { get; set; }
+        public int IdBootser { get; set; }
+        public int ReservationID { get; set; }
+        public int CampusID { get; set; }
+        public int EtatID { get; set; }
+        public DateTime DateEnregistrement { get; set; }
     }
 }
