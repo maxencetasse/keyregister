@@ -1,18 +1,61 @@
-﻿@model IEnumerable<KeyRegister.Models.Utilisateur>
+﻿@model KeyRegister.ViewModels.AboutVM
+
 @{
-    ViewBag.Title = "About";
+    ViewBag.Title = "A propos";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
 
-<p>Use this area to provide additional information.</p>
+        <!-- Navigation -->
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#infos" data-toggle="tab">Infos</a>
+            </li>
+            <li>
+                <a href="#faq" data-toggle="tab">F.A.Q</a>
+            </li>
+        </ul>
+        <br />
 
-@foreach (var utilisateur in Model)
-{
-    <p>@utilisateur.CampusID</p>
-    <p>@utilisateur.DateInscription</p>
-    <p>@utilisateur.IdBooster</p>
-    <p>@utilisateur.Nom</p>
-    <p>@utilisateur.Prenom</p>
-    <tr/>
-}
+        <!-- Onglets -->
+        <div class="tab-content">
+            <div class="tab-pane fade in active row" id="infos">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            @Html.LabelFor(p => p.Description)
+                        </div>
+                        <div class="panel-body">
+                            <p>@Model.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade row" id="faq">
+                <div class="alert alert-info">
+                    <p class="text-justify">@Model.FAQComment</p>
+                </div>
+
+                <div class="panel-group" id="accordeon">
+                    @foreach (var faq in Model.FAQList)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordeon" href="@("#collapse" + faq.FAQId)">@faq.Question</a>
+                                </h4>
+                            </div>
+                            <div id="@("collapse" + faq.FAQId)" class="panel-collapse collapse @((faq.FAQId == 1) ? "in" : "")">
+                                <div class="panel-body">
+                                    @faq.Reponse
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

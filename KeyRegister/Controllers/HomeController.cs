@@ -1,33 +1,59 @@
 ﻿using KeyRegister.DAL;
-using System;
+using KeyRegister.Global;
+using KeyRegister.Models;
+using KeyRegister.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace KeyRegister.Controllers
 {
     public class HomeController : Controller
     {
-        private Context db = new Context();
+        private Context _db = new Context();
 
+        // Accueil
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult Reservation()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View(db.Utilisateurs.ToList());
+            ReservationVM booking = new ReservationVM();
+            return View(booking);
         }
 
+        [HttpPost]
+        public ActionResult Reservation(ReservationVM booking)
+        {
+            return View(booking);
+        }
+
+        // A Propos + Charte
+        public ActionResult About()
+        {
+            return View(new AboutVM());
+        }
+
+        // Contact CM
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            if (UserSession.IfUserExist() == true)
+            {
+                int campusId = UserSession.GetUser().CampusID;
+                ContactVM model = new ContactVM()
+                {
+                    Campus = _db.Campus.FirstOrDefault(p => p.CampusID == campusId),
+                    Charte = "Lorem ipsum"
+                };
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
     }
 }

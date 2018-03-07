@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using KeyRegister.Models;
+using System.Data.Entity;
+using System.Security.Cryptography;
+using System.Text;
+using System.Linq;
+using KeyRegister.Global;
 
 namespace KeyRegister.DAL
 {
-    public class Initializer : System.Data.Entity.CreateDatabaseIfNotExists<Context>
+    public class Initializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<Context> //CreateDatabaseIfNotExists<Context>
     {
         protected override void Seed(Context context)
         {
@@ -17,6 +22,9 @@ namespace KeyRegister.DAL
                 ReservationLoader(context);
                 UtilisateurLoader(context);
                 HistoriqueLoader(context);
+                FAQLoader(context);
+
+                base.Seed(context);
             }
 
             catch (Exception e)
@@ -29,7 +37,7 @@ namespace KeyRegister.DAL
         {
             List<Campus> campus = new List<Campus>()
                 {
-                    new Campus() { Nom="Caen"}
+                    new Campus() { Adresse="10 Rue Alfred Kastler", CP="14000", Ville="Caen", Pays="France", Telephone="+33 1 53 35 97 00", Email="caen@supinfo.com" }
                 };
 
             campus.ForEach(c => context.Campus.Add(c));
@@ -93,15 +101,15 @@ namespace KeyRegister.DAL
         {
             List<Utilisateur> utilisateur = new List<Utilisateur>()
                 {
-                    new Utilisateur() {IdBooster = 213559, Nom = "VASSARD", Prenom = "Oweun", RoleID = 3, Charte = false, DateInscription = DateTime.Now},
-                    new Utilisateur() {IdBooster = 285334, Nom = "LOISEL", Prenom = "Virginie", RoleID = 2, Charte = false, DateInscription = DateTime.Now},
-                    new Utilisateur() {IdBooster = 213949, Nom = "TASSE", Prenom = "Maxence", RoleID = 1, Charte = false, DateInscription = DateTime.Now}
+                    new Utilisateur() {IdBooster = 213559, Nom = "VASSARD", Prenom = "Oweun", RoleID = 3, Charte = false, DateInscription = DateTime.Now, CampusID = 1, MDP = Method._MD5("123")},
+                    new Utilisateur() {IdBooster = 285334, Nom = "LOISEL", Prenom = "Virginie", RoleID = 2, Charte = false, DateInscription = DateTime.Now, CampusID = 1, MDP = Method._MD5("123")},
+                    new Utilisateur() {IdBooster = 213949, Nom = "TASSE", Prenom = "Maxence", RoleID = 1, Charte = false, DateInscription = DateTime.Now, CampusID = 1, MDP = Method._MD5("123")}
                 };
 
             utilisateur.ForEach(u => context.Utilisateurs.Add(u));
             context.SaveChanges();
         }
-        
+
         private void HistoriqueLoader(Context context)
         {
             //List<Historique> historique = new List<Historique>()
@@ -111,6 +119,19 @@ namespace KeyRegister.DAL
 
             //historique.ForEach(c => context.Historique.Add(c));
             //context.SaveChanges();
+        }
+
+        private void FAQLoader(Context context)
+        {
+            List<FAQ> faq = new List<FAQ>()
+            {
+                new FAQ() { Question = "Question 1", Reponse = "Réponse 1"},
+                new FAQ() { Question = "Question 2", Reponse = "Réponse 2"},
+                new FAQ() { Question = "Question 3", Reponse = "Réponse 3"}
+            };
+
+            faq.ForEach(c => context.FAQ.Add(c));
+            context.SaveChanges();
         }
     }
 }

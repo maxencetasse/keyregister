@@ -1,12 +1,17 @@
-﻿@{
+﻿@using KeyRegister.Models
+@{
     // Titre
-    string Title        = "Registre des clefs";
+    string Title = "Registre des clefs";
 
     // Lien
-    string ProfilUrl    = Url.Action("Index", "Home");
-    string IndexUrl     = Url.Action("Index", "Home");
-    string CalendarUrl  = Url.Action("Index", "Home");
-    string HistoryUrl   = Url.Action("Index", "Home");
+    string DeconnexionUrl = Url.Action("Disconnect", "User");
+    string ProfilUrl = Url.Action("Index", "Home");
+    string IndexUrl = Url.Action("Index", "Home");
+    string CalendarUrl = Url.Action("Index", "Home");
+    string HistoryUrl = Url.Action("Index", "Home");
+    string ReservationUrl = Url.Action("Reservation", "Home");
+    string AboutUrl = Url.Action("About", "Home");
+    string ContactUrl = Url.Action("Contact", "Home");
 }
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <!-- Titre en haut à gauche -->
@@ -19,6 +24,10 @@
             <ul class="dropdown-menu dropdown-user">
                 <li>
                     <a href="@ProfilUrl">
+                        <i class="fa fa-user fa-fw text-primary"></i>
+                        <span class="text-primary">Mon compte</span>
+                    </a>
+                    <a href="@DeconnexionUrl">
                         <i class="fa fa-sign-out fa-fw text-danger"></i>
                         <span class="text-danger">Déconnexion</span>
                     </a>
@@ -31,9 +40,12 @@
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav nav-sidebar" id="side-menu">
-                <li><a href="@IndexUrl"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord</a></li>
-                <li><a href="@CalendarUrl"><i class="fa fa-calendar fa-fw"></i> Plannings</a></li>
-                <li><a href="@HistoryUrl"><i class="fa fa-history fa-fw"></i> Historique</a></li>
+                <li><a href="@IndexUrl">        <i class="fa fa-dashboard fa-fw">   </i> Tableau de bord</a></li>
+                <li><a href="@CalendarUrl">     <i class="fa fa-calendar fa-fw">    </i> Plannings</a></li>
+                <li><a href="@HistoryUrl">      <i class="fa fa-history fa-fw">     </i> Historique</a></li>
+                <li><a href="@ReservationUrl">  <i class="fa fa-edit fa-fw">        </i> Réservation</a></li>
+                <li><a href="@AboutUrl">        <i class="fa fa-info-circle fa-fw"> </i> A propos</a></li>
+                <li><a href="@ContactUrl">      <i class="fa fa-envelope fa-fw">    </i> Contact</a></li>
             </ul>
         </div>
     </div>
