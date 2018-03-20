@@ -1,0 +1,36 @@
+﻿@model KeyRegister.ViewModels.ResetVM
+
+@{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+    ViewBag.Title = "Réinitialiser";
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+
+@using (Html.BeginForm("Reset", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="form-group">
+            @Html.DisplayNameFor(m => m.IdBooster)
+            @Html.TextBoxFor(m => m.IdBooster, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.IdBooster, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <a href="@Url.Action("Login", "User")" class="btn btn-danger btn-block">Se connecter</a>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <input class="btn btn-success btn-block" type="submit" value="Réinitialiser" />
+            </div>
+        </div>
+    </fieldset>
+}

@@ -2,7 +2,7 @@
 {
     public class Role
     {
-        public int idRole { get; set; }
-        public string nomRole { get; set; }
+        public int RoleID { get; set; }
+        public string Nom { get; set; }
     }
 }

@@ -8,7 +8,12 @@ namespace KeyRegister.Models
 {
     public class Campus
     {
-        public int idCampus { get; set; }
-        public string nomCampus { get; set; }
+        public int CampusID { get; set; }
+        public string Adresse { get; set; }
+        public string CP { get; set; }
+        public string Ville { get; set; }
+        public string Pays { get; set; }
+        public string Telephone { get; set; }
+        public string Email { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class Etat
     {
-        public int idEtat { get; set; }
-        public string nomEtat { get; set; }
+        public int EtatID { get; set; }
+        public string Nom { get; set; }
     }
 }

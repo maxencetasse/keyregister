@@ -1,0 +1,101 @@
+﻿@model KeyRegister.ViewModels.SubscribeVM
+
+@{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+    ViewBag.Title = "Inscription";
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+
+@using (Html.BeginForm("Subscribe", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <!-- IDBOOSTER -->
+        <div class="form-group">
+            @Html.DisplayNameFor(m => m.IdBooster)
+            @Html.TextBoxFor(m => m.IdBooster, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.IdBooster, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- NOM -->
+        <div class="form-group">
+            @Html.DisplayNameFor(m => m.Nom)
+            @Html.TextBoxFor(m => m.Nom, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Nom, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- PRENOM -->
+        <div class="form-group">
+            @Html.DisplayNameFor(m => m.Prenom)
+            @Html.TextBoxFor(m => m.Prenom, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Prenom, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- MDP -->
+        <div class="form-group">
+            @Html.DisplayNameFor(m => m.MDP)
+            @Html.TextBoxFor(m => m.MDP, "", new { @class = "form-control", @type = "password" })
+            @Html.ValidationMessageFor(m => m.MDP, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- MDP VERIF -->
+        <div class="form-group">
+            @Html.DisplayNameFor(m => m.Verif)
+            @Html.TextBoxFor(m => m.Verif, "", new { @class = "form-control", @type = "password" })
+            @Html.ValidationMessageFor(m => m.Verif, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- CAMPUS -->
+        <div>
+            @Html.HiddenFor(m => m.CampusList)
+            @*@Html.DropDownListFor(m => m.CampusList, new SelectList(Model.CampusList, "Key", "Value"), new { @class = "form-control" })*@
+        </div>
+
+        <!-- CHARTE -->
+        <div class="checkbox">
+            <label>
+                @Html.CheckBoxFor(m => m.CharteCheck, new { @type = "checkbox" })
+                <button class="btn-link" data-toggle="modal" data-target="#myModal">J'accepte la charte d'utilisation</button>
+            </label>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">Charte d'utilisation</h4>
+                        </div>
+                        <div class="modal-body">
+                            @Model.Charte
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.ValidationMessageFor(m => m.CharteCheck, "", new { @class = "text-danger" })
+
+        <!-- BOUTONS -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <a href="@Url.Action("Login", "User")" class="btn btn-danger btn-block">Se connecter</a>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <input class="btn btn-success btn-block" type="submit" value="S'inscrire" />
+            </div>
+        </div>
+
+        <div class="row">
+            <a href="@Url.Action("Reset", "User")" class="col-lg-12 col-md-12 col-xs-12 btn-link">Mot de passe oublié ?</a>
+        </div>
+    </fieldset>
+}
