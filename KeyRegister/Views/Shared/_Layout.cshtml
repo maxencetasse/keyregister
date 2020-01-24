@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Information -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Title -->
+    <title>@ViewBag.Title</title>
+    <!-- Bundle -->
+    @Styles.Render("~/bundles/css")
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Menu -->
+        @RenderPage("~/Views/Shared/navigation.cshtml")
+
+        <!-- Page Content -->
+        <div id="page-wrapper" class="custom">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    @Scripts.Render("~/bundles/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@model KeyRegister.ViewModels.ContactVM
+@{
+    ViewBag.Title = "Contact";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#infos" data-toggle="tab">Infos</a>
+            </li>
+            <li>
+                <a href="#charte" data-toggle="tab">Charte</a>
+            </li>
+        </ul>
+        <br />
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="infos">
+                <div class="well well-lg text-center align-middle">
+                    <h3><b>@("(" + Model.Campus.CP + ") " + Model.Campus.Ville)</b></h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>Maps</b>
+                            </div>
+                            <div class="panel-body" style="padding:0;">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2606.912555745164!2d-0.39448848431341543!3d49.20221837932273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480a432acb9795e1%3A0x5144ebe32bcc4d77!2s6+Rue+Alfred+Kastler%2C+14000+Caen!5e0!3m2!1sfr!2sfr!4v1520454715004" frameborder="0" style="border:0; height:100%; width: 100%; min-height: 50vh" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>Détails</b>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="list-unstyled">
+                                    <li><p class="fa fa-map-marker"> : @Model.Campus.Adresse</p></li>
+                                    <li><p class="fa fa-phone"> : @Model.Campus.Telephone</p></li>
+                                    <li><p class="fa fa-envelope-o"> : <a href="@("mailto:" + Model.Campus.Email + "?Subject=KeyRegister")" target="_top">@Model.Campus.Email</a></p></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="charte">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <b>Charte en vigueur</b>
+                    </div>
+                    <div class="panel-body">
+                        @Model.Charte
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
